@@ -40,9 +40,7 @@ PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
 
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -74,7 +72,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
@@ -83,11 +80,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_PACKAGES += \
-    audio.primary.universal7420 \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
-    tinymix \
     libtinycompress
 
 # Browser
@@ -96,16 +91,13 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.exynos5 \
     Snap
 
 # DTB    
-PRODUCT_PACKAGES += \
-	dtbhtoolExynos
+PRODUCT_PACKAGES +=
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    make_ext4fs \
     setup_fs
 
 PRODUCT_COPY_FILES += \
@@ -115,8 +107,6 @@ PRODUCT_COPY_FILES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    fingerprintd \
-    fingerprint.exynos5 \
     libbauthtzcommon_shim
 
 # Graphics
@@ -155,10 +145,8 @@ PRODUCT_COPY_FILES += \
 # NFC
 PRODUCT_PACKAGES += \
     libnfc-nci \
-    libnfc_nci_jni \
     NfcNci \
-    Tag \
-    com.android.nfc_extras
+    Tag
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
@@ -227,9 +215,6 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd \
-    libnetcmdiface \
-    macloader \
-    wifiloader \
     wpa_supplicant \
     wpa_supplicant.conf
 
@@ -242,7 +227,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 # call Samsung LSI board support package
-$(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos7420/exynos7420.mk)
 
 # Get non-open-source specific aspects

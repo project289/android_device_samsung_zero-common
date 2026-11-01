@@ -95,7 +95,6 @@ BOARD_HDMI_INCAPABLE := true
 BOARD_USES_GSC_VIDEO := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_sec
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
@@ -110,7 +109,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/exynos7420
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 BOARD_KERNEL_SEPARATED_DT := true
-TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
+TARGET_CUSTOM_DTBTOOL :=
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := universal7420
@@ -160,7 +159,6 @@ TARGET_SEC_FP_HAL_VARIANT := bauth
 BOARD_SECCOMP_POLICY += device/samsung/zero-common/seccomp
 
 # Sepolicy
-BOARD_SEPOLICY_DIRS := $(LOCAL_PATH)/sepolicy
 
 # TWRP
 ifneq ($(strip $(wildcard $(TOP)/bootable/recovery/variables.h)),)
@@ -193,3 +191,9 @@ RIL_SET_TWO_MIC_CONTROL_WORKAROUND := true
 
 # inherit from the proprietary version
 -include vendor/samsung/zero-common/BoardConfigVendor.mk
+SELINUX_IGNORE_NEVERALLOWS := true
+
+BOARD_KERNEL_IMAGE_NAME := Image
+TARGET_KERNEL_SOURCE := kernel/samsung/universal7420
+TARGET_KERNEL_CONFIG := exynos7420-zerolte_defconfig
+TARGET_KERNEL_CLANG_VERSION := proton
